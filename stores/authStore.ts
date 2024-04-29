@@ -13,11 +13,11 @@ export const useAuthStore = defineStore("authStore", () => {
 
     /*** COMPUTED */
     const isAuthenticated = computed(() => {
-    return authenticated.value ?? false;
+      return authenticated.value ?? false;
     });
     
     const getUser = computed(() => {
-    return user.value ?? {};
+      return user.value ?? {};
     });
 
     /*** FUNC */

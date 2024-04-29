@@ -18,11 +18,19 @@
                 >Home</NuxtLink
               >
               <NuxtLink
+                v-if="isAuthenticated"
+                to="/tasks"
+                class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
+                >Tasks</NuxtLink
+              >
+              <NuxtLink
+                v-if="!isAuthenticated"
                 to="/login"
                 class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
                 >Login</NuxtLink
               >
               <NuxtLink
+                v-if="!isAuthenticated"
                 to="/Register"
                 class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
                 >Register</NuxtLink
@@ -38,4 +46,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { isAuthenticated } = useAuthStore();
+</script>
