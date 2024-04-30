@@ -35,6 +35,13 @@
                 class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
                 >Register</NuxtLink
               >
+              <a
+                v-if="isAuthenticated"
+                class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
+                href="#"
+                @click="func_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -47,5 +54,14 @@
 </template>
 
 <script setup lang="ts">
-const { isAuthenticated } = useAuthStore();
+import { clearAllCookies } from "~/composables/useCookie";
+const authStore = useAuthStore();
+const { isAuthenticated } = storeToRefs(authStore);
+
+const func_logout = () => {
+  authStore.logout().then(() => {
+    clearAllCookies();
+    window.location.href = "/login";
+  });
+};
 </script>

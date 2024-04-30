@@ -33,10 +33,15 @@ export const useTaskStore = defineStore("taskStore", () => {
        return await taskRepo.deleteTask(id);
     }
 
+    const completeTask = async (id: number, params: any) => {
+       return await taskRepo.completeTask(id, params);
+    }
+
     return {
         fetchList,
         create,
         destroy,
+        completeTask,
         getTasks
     }
 });

@@ -10,7 +10,7 @@ export const auth = (axios: AxiosInstance) => ({
     return axios.post("/register", params);
   },
 
-  async logout(token: string): Promise<any> {
+  async logout(): Promise<any> {
     return axios.post(`/logout`);
   }
 });

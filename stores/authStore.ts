@@ -3,8 +3,9 @@ import { defineStore } from "pinia";
 import { auth } from "~/utils/repository/auth";
 
 export const useAuthStore = defineStore("authStore", () => {
-    const { $axios } = useNuxtApp();
+    const { $axios, $auth } = useNuxtApp();
     const regularRepo = auth($axios as AxiosInstance);
+    const authRepo = auth($auth as AxiosInstance);
 
     /*** STATE */
     const user = useCookie("user");
@@ -48,10 +49,15 @@ export const useAuthStore = defineStore("authStore", () => {
           })
       };
 
+      const logout = async () => {
+        return await authRepo.logout()
+      }
+
 
       return {
         register,
         login,
+        logout,
         isAuthenticated,
         getUser,
       }

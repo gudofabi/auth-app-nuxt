@@ -16,4 +16,8 @@ export const tasks = (axios: AxiosInstance) => ({
     async deleteTask(id: number): Promise<any> {
         return axios.delete(`/tasks/${id}`);
     },
+
+    async completeTask(id: number, params: any): Promise<any> {
+        return axios.patch(`/tasks/${id}/complete`, params);
+    },
 })
